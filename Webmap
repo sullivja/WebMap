@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Leaflet Map</title>
+   <title>Leaflet Map</title>
 </head>
 <body>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <!-- Our web map and content will go here -->
+<p>Let's see what we've got here</p>
 </body>
+
 </html>
