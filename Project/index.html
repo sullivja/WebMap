@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tsunami Inundation Zones</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--add required stylesheets-->
+    <!--make sure you add bootstrap 3.3.7 rather than 4.0.0-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="dist/storymap.2.3.css">
+    <!--Mapbox-->
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.1/mapbox-gl.css" rel='stylesheet'/>
+    <!--facebook and info icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" href="assets/wave32.png" type="image/x-icon">
+    <!--add required libraries-->
+    <!--leaflet-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--boostrap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <!--story map plugin-->
+    <script src="dist/storymap.2.3.js"></script>
+
+
+</head>
+
+
+<body>
+
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section data-scene="overview" data-background="assets/coastal.mp4">
+                <div class="fullscreen text-center">
+                    <h1>The Big Splash</h1>
+                    <h1>
+                        <small style="color: rgba(255,255,255,0.95)"> Towns in the Oregon coast are in danger in the event of a Tsunami
+                        </small>
+                    </h1>
+                </div>
+            </section>
+            <section data-scene="scene1">
+                <h2>Cascadia Earthquake</h2>
+                <p>Many cities on the oregon coast have sizable portions that will be completely swallowed by a sizable Tsunami caused by the Cascadia Subduction Zone Earthquake in what's called an Inundation Zone</p>
+                <p>
+                    <img src="assets/inundation.PNG" alt="Not Working" width="500">
+                </p>
+            </section>
+
+            <section data-scene="scene2">
+                <h2>Bridge Damage</h2>
+
+                <p>
+                    <img src="assets/astoria.jpg" alt="Not Working" width="500">
+                </p>
+
+                <p>Astoria is a city in Oregon. It's on the Columbia River, near the Pacific Ocean. The Astoria Column, a towering hilltop monument with murals depicting area history, offers panoramic views. The Columbia River Maritime Museum showcases fishing, shipping and military history in a waterfront building. Set in a Queen Anne–style Victorian mansion, Flavel House Museum features period furniture as well as manicured gardens.
+                </p>
+
+                <p>Elevation: 22.97′</p>
+
+                <p> Population: 9,802</p>
+            </section>
+
+            <section data-scene="scene3">
+                <h2>Seaside</h2>
+                <p>
+                    <img src="assets/seaside_aerial.jpg" alt="Not working" width="500">
+                </p>
+                <p>Seaside is a small resort city in northwestern Oregon. Its beach is known for surf breaks and a 1920s promenade. The Seaside Aquarium has touch tanks and a seal exhibit.
+                </p>
+
+                <p>Elevation: 17.06′</p>
+
+                <p>Population 6,685</p>
+            </section>
+
+            <section data-scene="scene4">
+                <h2>Tillamook</h2>
+                <p>
+                    <img src="assets/tillamook_aerial.JPG" alt="Not Working" width="500">
+                </p>
+                <P>Tillamook is a coastal town with large feilds for dairy cows that are at risk during a tsunami scenario. The town is home of the Tillamook Cheese Factory and the Tillamook Air Musuem</P>
+
+                <p>Elevation: 23.95'</p>
+
+                <p>Population: 5,183</p>
+            </section>
+            <section data-scene="scene5">
+                <h2>Lincoln City</h2>
+                <p>
+                    <img src="assets/Lincoln_city.jpg" alt="Not Working" width="500">
+                </p>
+                <p>Lincoln City is a town on the central coast of Oregon. At the D River State Recreation Site, the short D River connects Devil’s Lake to a sandy Pacific beach. Lincoln City is one of the lowest lying towns on the Oregon coast</p>
+
+                <p>Elevation: 3.281′</p>
+
+                <p>Population: 8,722</p>
+            </section>
+            <section data-scene="scene6">
+                <h2>Newport</h2>
+                <p>
+                    <img src="assets/newport_bridge.jpg" alt="Not Working" width="500">
+                </p>
+                <p>Newport is a city on Oregon’s central coast. The Oregon Coast Aquarium, on Yaquina Bay, features local marine life, with underwater walkways and a seabird aviary. While much of Newport is above the induation zone there is a large area that is prone to it</p>
+                <p>Elevation: 134′</p>
+                <p>Population: 10,393 </p>
+            </section>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    var layers = {
+        layer1: {
+            layer: L.tileLayer('https://api.mapbox.com/styles/v1/sullivja/cj98sm01i1tmu2rp8hgje1xrx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VsbGl2amEiLCJhIjoiY2o4eGZlZW8wMXpkZzJ4cXprZm9jcDVuYyJ9.ADpeebksIzJDvaFsWAO7TA'),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+        },
+        layer2: {
+            layer: L.geoJson.ajax('assets/bridges_2.geojson', {
+                color: 'red',
+                weight: 2
+            }),
+            legend: '<i style="background: Red; opacity: 0.5"></i><p><b>Inunduation Zone</b></p>'
+        },
+        layer3: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+        }
+    };
+    var scenes = {
+        scene1: {lat: 44.0563432, lng: -123.5099875, zoom:  7.5, layers: ['layer1'], name: "Intro"},
+        scene2: {lat: 45.520425, lng: -122.675100, zoom: 13, layers: [ 'layer2'], name: "Bridges"},
+        scene3: {lat:  45.992321, lng: -123.921503, zoom: 11, layers: [ 'layer2'], name: "Seaside"},
+        scene4: {lat:  45.460815, lng: -123.848690, zoom: 13, layers: [ 'layer2'], name: "Tillamook"},
+        scene5: {lat:  44.970811, lng: -124.014837, zoom: 11, layers: ['layer2'], name: "Lincoln City"},
+        scene6: {lat:  44.621142, lng: -124.058853, zoom: 11, layers: ['layer2'], name: "Newport"}
+    };
+    $('#storymap').storymap({
+        scenes: scenes,
+        layers: layers,
+        baselayer: layers.layer1,
+        legend: true,
+        loader: true,
+        flyto: true,
+        credits: "build with<i class='glyphicon glyphicon-heart animated zoomIn infinite' style='color: red'></i> from Bo Zhao",
+        scalebar: true,
+        scrolldown: false,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+            basemap = this.baselayer.layer.addTo(map);
+            return map;
+        }
+    });
+</script>
+
+dl>
+<dt>
+    <!--facebook icon-->
+    <a class="fa fa-facebook-square btn"
+       href="https://facebook.com/sharer.php?u=http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/video.html"
+       target="_blank"></a>
+</dt>
+<dt>
+    <!--facebook icon-->
+    <a class="fa fa-git-square btn" href="https://sullivja.github.io/Coastal_cities/Test3" style="top:40px"
+       target="_blank"></a>
+</dt>
+<dt>
+    <!--info icon-->
+    <i class="fa fa-file-text-o btn" style="top:60px" data-toggle="modal" data-target="#info-modal"></i>
+</dt>
+</dl>
+
+</body>
+
+
+</html>
