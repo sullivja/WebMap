@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cascadia Earthquake</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--add required stylesheets-->
+    <!--make sure you add bootstrap 3.3.7 rather than 4.0.0-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="dist/storymap.2.3.css">
+    <!--Mapbox-->
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.1/mapbox-gl.css" rel='stylesheet'/>
+    <!--facebook and info icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" href="assets/quake.png" type="image/x-icon">
+    <!--add required libraries-->
+    <!--leaflet-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--boostrap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <!--story map plugin-->
+    <script src="dist/storymap.2.3.js"></script>
+
+
+</head>
+
+
+<body>
+
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section data-scene="overview" data-background="assets/coastal.mp4">
+                <div class="fullscreen text-center">
+                    <h1>Cascadia Earthquake</h1>
+                    <h1>
+                        <small style="color: rgba(255,255,255,0.95)"> The Cascadia earthquake poses major danger to the people and infrastructure of Oregon.
+
+                        </small>
+                    </h1>
+                </div>
+            </section>
+            <section data-scene="scene1">
+                <h2>Juan de Fuca Plate</h2>
+                <p>The Juan de Fuca plate of the Oregon coast under the northerly portion of the western side of the North American Plate at the Cascadia subduction zone. It is at the site of a convergent plate boundary that is poised to create a mega thrust earthquake of up to 9 on the Richter scale. femA projects that nearly thirteen thousand people will die in the Cascadia earthquake and tsunami
+                </p>
+                <p>
+                    <img src="assets/plate.gif" alt="Not Working" width="75%">
+                </p>
+            </section>
+
+            <section data-scene="scene2">
+                <h2>The Earthquake</h2>
+
+                <p>
+                    <img src="assets/earthquake.jpg" alt="Not Working" class="img-reponsive img-thumbnail">
+                </p>The resulting quake will have increasing severity the farther west you go in Oregon and will still do sizable damage when it reaches the Willamette valley.
+
+                <p>
+                </p>
+            </section>
+
+            <section data-scene="scene3">
+                <h2>Tsunami</h2>
+                <p>
+                    <img src="assets/seaside_aerial.jpg" alt="Not working" width="80%">
+                </p>
+                <p>The massive earthquake will also cause a massive tsunami that will fulling envelope parts of the Oregon coast in what is known as an induction zone that will devastate communities on the Oregon coast.
+                </p>
+            </section>
+
+            <section data-scene="scene4">
+                <h2>Bridge Failure</h2>
+                <p>
+                    <img src="assets/bridge.jpg" alt="Not Working" class="img-reponsive img-thumbnail">
+                </p>
+                <P>The earthquake will cause sizable damage to Oregon transportation infrastructure. In Oregon many of the bridges will collapse while others will be so heavily damaged they will not be able to be used with their on and off ramps damaged beyond repair.
+
+                </p>
+            </section>
+            <section data-scene="scene5">
+                <h2>Soil Liquifaction</h2>
+                <p>
+                    <img src="assets/liquefaction.jpg" alt="Not Working" width="100%">
+                </p>
+                <p>In particular risk to the Willamette valley is the risk of soil liquefaction where a massive amount of the damage to the buildings that lie on top of them.
+                </p>
+            </section>
+            <section data-scene="scene6">
+                <h2>Energy Infastructure</h2>
+                <p>
+                    <img src="assets/energy.png" alt="Not Working" class="img-reponsive img-thumbnail">
+                </p>
+                <p>The Olympia pipeline which delivers a majority of the fuel for all of Oregon will be damaged in several places and will not be able to be used. Not only that but the state’s main oil reserve along the river was built under land that is extremely prone to soil liquefaction and will be destroyed. This problem will be exacerbated by several bridge collapses that will make bringing fuel in by river far more difficult. This combined with the damaged nature of the roads will no doubt cause massive fuel shortages following the earthquake.</p>
+            </section>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    var layers = {
+        layer1: {
+            layer: L.tileLayer('https://api.mapbox.com/styles/v1/sullivja/cj98sm01i1tmu2rp8hgje1xrx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VsbGl2amEiLCJhIjoiY2o4eGZlZW8wMXpkZzJ4cXprZm9jcDVuYyJ9.ADpeebksIzJDvaFsWAO7TA'),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b></b></p>'
+        },
+        layer2: {
+            layer: L.geoJson.ajax('assets/bridges_2.geojson', {
+                color: 'red',
+                weight: 2
+
+            }),
+            legend: '<i style="background: Red; opacity: 0.5"></i><p><b>Bridge Damage</b></p>'
+        },
+        layer3: {
+            layer: L.geoJson.ajax('assets/xxl_tsunami_simplified.geojson', {
+                color: 'red',
+                weight: 2
+            }),
+            legend: '<i style="background: Red; opacity: 0.5"></i><p><b>Indundation zone</b></p>'
+        },
+        layer4: {
+            layer: L.geoJson.ajax('assets/bridge1.geojson', {
+                color: 'Green',
+                weight: 2
+            }),
+            legend: '<i style="background: Green; opacity: 0.5"></i><p><b>Minor Damage</b></p>'
+        },
+        layer5: {
+            layer: L.geoJson.ajax('assets/bridge2.geojson', {
+                color: 'Yellow',
+                weight: 2
+            }),
+            legend: '<i style="background: Yellow; opacity: 0.5"></i><p><b>Moderate Damage</b></p>'
+        },
+        layer6: {
+            layer: L.geoJson.ajax('assets/bridge3.geojson', {
+                color: 'Orange',
+                weight: 2
+            }),
+            legend: '<i style="background: Orange; opacity: 0.5"></i><p><b>Severe Damage</b></p>'
+        },
+        layer9: {
+            layer: L.geoJson.ajax('assets/energy_hub.geojson', {
+                color: 'blue',
+                weight: 2
+            }),
+            legend: '<i style="background: blue; opacity: 0.5"></i><p><b>Critical energy infastructure</b></p>'
+        },
+        layer10: {
+            layer: L.geoJson.ajax('assets/plate_Boundries.geojson', {
+                color: 'black',
+                weight: 2
+            }),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>Plate Boundry</b></p>'
+
+        },
+        layer11: {
+            layer: L.geoJson.ajax('assets/slab.geojson', {
+                color: 'red',
+                weight: 2
+            }),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>Slab Contours</b></p>'
+
+        },
+        layer7: {
+            layer: L.geoJson.ajax('assets/bridge4.geojson', {
+                color: 'red',
+                weight: 2
+            }),
+            legend: '<i style="background: Red; opacity: 0.5"></i><p><b>Total Collapse</b></p>'
+        },
+        layer8: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+        }
+    };
+    var scenes = {
+        scene1: {lat: 44.63417, lng: -124.174324, zoom:  7.5, layers: ['layer10', 'layer11'], name: "Plate"},
+        scene2: {lat: 43.963691, lng: -121.443344, zoom: 7, layers: [ 'layer2'], name: "Earthquake"},
+        scene3: {lat:  44.63417, lng: -124.174324, zoom: 9, layers: [ 'layer3'], name: "Tsunami"},
+        scene4: {lat:  45.520425, lng: -122.675100, zoom: 13.5, layers: [ 'layer7', 'layer6', 'layer5', 'layer4', 'layer9'], name: "Bridges"},
+        scene5: {lat:  43.936740, lng: -121.507069, zoom: 7.5, layers: ['layer2'], name: "Soil Liquefaction"},
+        scene6: {lat:  45.539981, lng: -122.701650, zoom: 12, layers: [ 'layer7', 'layer6', 'layer5', 'layer4', 'layer9'], name: "Energy infastructure"}
+    };
+    $('#storymap').storymap({
+        scenes: scenes,
+        layers: layers,
+        baselayer: layers.layer1,
+        legend: true,
+        loader: true,
+        flyto: true,
+        credits: "build with<i class='glyphicon glyphicon-heart animated zoomIn infinite' style='color: red'></i> from Jacob Sullivan",
+        scalebar: true,
+        scrolldown: false,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+            basemap = this.baselayer.layer.addTo(map);
+            return map;
+        }
+    });
+</script>
+
+dl>
+<dt>
+    <!--facebook icon-->
+    <a class="fa fa-facebook-square btn"
+       href="https://facebook.com/sharer.php?u=http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/video.html"
+       target="_blank"></a>
+</dt>
+<dt>
+    <!--facebook icon-->
+    <a class="fa fa-git-square btn" href="https://sullivja.github.io/Coastal_cities/Test3" style="top:40px"
+       target="_blank"></a>
+</dt>
+<dt>
+    <!--info icon-->
+    <i class="fa fa-file-text-o btn" style="top:60px" data-toggle="modal" data-target="#info-modal"></i>
+</dt>
+</dl>
+
+</body>
+
+
+</html>
